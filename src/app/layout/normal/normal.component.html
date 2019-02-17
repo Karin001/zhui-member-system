@@ -1,0 +1,36 @@
+<header>
+  <mat-toolbar color="primary" class="header">
+   
+    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+    <!-- <i (click)="drawer.toggle()" class="anticon anticon-menu-unfold" *ngIf="!sidebarIsHide"></i> -->
+    <div class="menu-title">
+      嘴的员工管理系统
+    </div>
+    <mat-icon>person</mat-icon>
+  </mat-toolbar>
+</header>
+<mat-drawer-container class="container" [hasBackdrop]="true">
+  <mat-drawer #drawer opened class="sidebar" [mode]="'over'" >
+    <app-normal-sidebar></app-normal-sidebar>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <div class="router">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <span>
+        Powered by
+        <a routerLink="/project/author">
+          <strong>
+            Eve
+          </strong>
+        </a> ©2018 | Hosted by
+        <a href="https://pages.coding.me" target="view_window" style="font-weight: bold">Coding Pages</a> | QQ群:925528845
+      </span>
+      <br />
+      <span>
+        如需转载请标明出处
+      </span>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

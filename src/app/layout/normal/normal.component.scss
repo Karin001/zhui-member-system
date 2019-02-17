@@ -1,0 +1,19 @@
+:host{
+    header{
+        top: 0;
+        width: 100%;
+        position: fixed;
+        z-index: 10;
+    }
+    .container{
+        margin-top:64px;
+        min-height: calc(100vh - 64px)
+    }
+    .sidebar{
+        top:64px;
+        position: fixed;
+    }
+    .content{
+        height: 2000px;
+    }
+}
