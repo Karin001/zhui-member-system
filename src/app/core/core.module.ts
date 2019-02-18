@@ -7,7 +7,7 @@ import { startUpProvider } from './start-up';
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers:[startUpProvider]
 })
