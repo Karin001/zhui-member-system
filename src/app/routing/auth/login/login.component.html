@@ -1,19 +1,37 @@
 
 <mat-card class="login">
+    <mat-progress-bar mode="indeterminate"  *ngIf="loginPending"></mat-progress-bar>
   <mat-card-header>
     <mat-card-title>登录到管理系统</mat-card-title>
+    
   </mat-card-header>
   <mat-card-content>
-    <mat-form-field class="login-">
-      <input matInput placeholder="工号" type="text" >
+    <mat-form-field>
+      <input matInput placeholder="工号" 
+      required type="text"
+      minlength="6"
+      maxlength="12"
+      [(ngModel)]="loginInfo.id"
+      #id="ngModel"
+      >
+      <mat-error *ngIf="id.errors?.required">工号不能为空</mat-error>
+      <mat-error *ngIf="id.errors?.minlength">工号不少于6位数</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="密码" [type]="password_hide? 'password' : 'text'">
+      <input matInput placeholder="密码" 
+      required [type]="password_hide? 'password' : 'text'" 
+      minlength="6"
+      maxlength="12"
+      [(ngModel)]="loginInfo.password"
+      #ps="ngModel"
+      >
       <mat-icon matSuffix (click)="password_hide = !password_hide">{{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="ps.errors?.required">密码不能为空</mat-error>
+      <mat-error *ngIf="ps.errors?.minlength">密码不少于6位数</mat-error>  
     </mat-form-field>
     
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>确定</button>
+    <button mat-button [disabled]="loginPending || id.invalid || ps.invalid" (click)="login()">确定</button>
   </mat-card-actions>
 </mat-card>
