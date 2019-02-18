@@ -11,6 +11,6 @@ import { NormalSidebarComponent } from './normal-sidebar/normal-sidebar.componen
     CommonModule,
     SharedModule
   ],
-  exports:[NormalComponent]
+  exports:[NormalComponent,PassportComponent]
 })
 export class LayoutModule { }

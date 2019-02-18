@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IdentityService, IdentityInfo } from './core/identity.service';
+import {take} from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'zhuxiwen';
+  constructor(router:Router,identityService:IdentityService){
+    identityService.identity
+    .pipe(take(1))
+    .subscribe((identityInfo:IdentityInfo) => {
+      switch (identityInfo.status) {
+        case 'visitor':
+        router.navigateByUrl('/passport/auth/login')
+          break;
+        case 'origin password':
+        router.navigateByUrl('/passport/auth/reset-password');
+        default:
+          break;
+      }
+    })
+    
+  }
 }

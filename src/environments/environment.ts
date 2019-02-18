@@ -3,7 +3,66 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url:{
+    identity:'identity'
+  },
+  permission:{
+    admin:[
+      {
+        name:'项目管理',
+        children:[
+          {
+            name:'查看所有项目',
+            url:'/project/all',
+            icon:'folder'
+          },
+          {
+            name:'新增一个项目',
+            url:'/project/new',
+            icon:'add'
+          }
+        ]
+      },
+      {
+        name:'人员管理',
+        children:[
+          {
+            name:'查看所有人员',
+            icon:'face',
+            url:'/people/all'
+          }
+        ]  
+      }
+    ],
+    member:[
+      {
+        name:'项目管理',
+        children:[
+          {
+            name:'查看所有项目',
+            url:'/project/all',
+            icon:'folder'
+          },
+          {
+            name:'新增一个项目',
+            url:'/project/new',
+            icon:'add'
+          }
+        ]
+      },
+      {
+        name:'人员管理',
+        children:[
+          {
+            name:'查看所有人员',
+            icon:'face',
+            url:'/people/all'
+          }
+        ]  
+      }
+    ]
+  }
 };
 
 /*
