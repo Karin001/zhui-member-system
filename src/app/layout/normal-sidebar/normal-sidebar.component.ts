@@ -10,11 +10,11 @@ export class NormalSidebarComponent implements OnInit {
   menuItems;
   constructor(identityService:IdentityService) {
     identityService.identity.subscribe(identityInfo => {
-      switch (identityInfo.status) {
-        case 'admin':
+      switch (identityInfo.identity) {
+        case environment.auth_status.admin:
           this.menuItems = environment.permission.admin
           break;
-        case 'member':
+        case environment.auth_status.member:
           this.menuItems = environment.permission.member
         default:
           break;

@@ -8,7 +8,8 @@ import { MatCardModule,
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSnackBarModule
   } from '@angular/material';
 import { RouterModule } from '@angular/router';
 const materialModules = [
@@ -20,7 +21,8 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSnackBarModule
 ]
 @NgModule({
   declarations: [],

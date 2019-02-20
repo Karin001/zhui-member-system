@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 export interface IdentityInfo {
-  status:string;
-  id:string | null;
+  identity:string;
+  staffId:string | null;
+  staffName:string | null;
 }
 
 @Injectable({

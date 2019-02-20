@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { startUpProvider } from './start-up';
+import { ErrorHandleInterceptor } from './interceptors/error-handle.interceptor';
 
 @NgModule({
   declarations: [],
@@ -9,6 +10,6 @@ import { startUpProvider } from './start-up';
     CommonModule,
     HttpClientModule,
   ],
-  providers:[startUpProvider]
+  providers:[startUpProvider, { provide: HTTP_INTERCEPTORS, useClass: ErrorHandleInterceptor, multi: true },]
 })
 export class CoreModule { }

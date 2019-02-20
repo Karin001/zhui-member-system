@@ -1,3 +1,5 @@
+import { HttpErrorResponse } from '@angular/common/http';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -5,7 +7,15 @@
 export const environment = {
   production: false,
   url:{
-    identity:'identity'
+    identity:'/api/identity',
+    login:'/api/login',
+    resetPassword:'/api/resetPassword'
+  },
+  auth_status:{
+    admin:'admin',
+    visitor:'visitor',
+    member:'member',
+    lockUser:'lockUser',
   },
   permission:{
     admin:[
@@ -62,6 +72,18 @@ export const environment = {
         ]  
       }
     ]
+  },
+  errorHandle:{
+    errorInfoKey:'errorInfo',
+    getErrorInfo:function(error:HttpErrorResponse){
+      return error.error[this.errorInfoKey]
+    },
+    errorDeCode:{
+      'sesslon invalid':'权限已过期,即将过跳转到重新登录页面',
+      'origin password':'您未修改初始密码，即将跳转到修改密码页面',
+      'login info error':'登录信息有误，请重新输入'
+    },
+    otherErrorInfo:'网络错误，请刷新后重试'
   }
 };
 

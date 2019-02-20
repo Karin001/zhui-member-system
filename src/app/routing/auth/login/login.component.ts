@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/core/auth/login.service';
+import { MatSnackBar } from '@angular/material';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+export interface LoginInfo {
+  id: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -8,17 +16,29 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   password_hide = true;
   loginPending = false;
-  loginInfo = {
-    id:'',
-    password:''
+  loginInfo: LoginInfo = {
+    id: '',
+    password: ''
   }
-  constructor() { }
+  constructor(private loginService: LoginService, private snk: MatSnackBar) { }
 
   ngOnInit() {
   }
-  login(){
+  login() {
     this.loginPending = true;
-    console.log(this.loginInfo)
+    // console.log(this.loginInfo)
+    this.loginService.login(this.loginInfo)
+
+      .subscribe(data => {
+        this.loginPending = false;
+        if (!data['success']) {
+          this.snk.open(data['errorHint'], null, {
+            duration: 2000
+          })
+        } else {
+
+        }
+      })
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IdentityService, IdentityInfo } from './core/identity.service';
 import {take} from 'rxjs/operators'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,11 @@ export class AppComponent {
     identityService.identity
     .pipe(take(1))
     .subscribe((identityInfo:IdentityInfo) => {
-      switch (identityInfo.status) {
-        case 'visitor':
+      switch (identityInfo.identity) {
+        case environment.auth_status.visitor:
         router.navigateByUrl('/passport/auth/login')
           break;
-        case 'origin password':
+        case environment.auth_status.lockUser:
         router.navigateByUrl('/passport/auth/reset-password');
         default:
           break;
