@@ -3,7 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { ResetPSInfo } from '../../routing/auth/reset-password/reset-password.component'
 import { environment } from '../../../environments/environment'
 import { tap } from 'rxjs/operators';
-
+import { IdentityService } from '../identity.service';
+export interface ResetPSResType{
+  success:boolean;
+  payload?:{
+    staffName:string;
+    staffId:string;
+    identity:string;
+  }
+  errorInfo?:string;
+  errorHint?:string;
+}
 
 
 @Injectable({
@@ -11,13 +21,17 @@ import { tap } from 'rxjs/operators';
 })
 export class ResetPSService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private identityService: IdentityService) { }
   reset(resetPSInfo: ResetPSInfo) {
-    return this.http.post(environment.url.resetPassword, resetPSInfo)
+    return this.http.post<ResetPSResType>(environment.url.resetPassword, resetPSInfo)
 
       .pipe(
-        tap(data => {
-          console.log(data)
+        tap(res => {
+          console.log(res);
+          if(res.success){
+            this.identityService.identityUpdate(res.payload)
+          }
         })
       )
   }

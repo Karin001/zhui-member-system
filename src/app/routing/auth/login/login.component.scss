@@ -19,6 +19,8 @@
             flex-wrap: wrap;
             mat-form-field{
                 padding-left: 10px;
+                width: 100%;
+                max-width:400px;
             }
         }
     }

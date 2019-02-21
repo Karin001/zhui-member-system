@@ -3,7 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { LoginInfo } from '../../routing/auth/login/login.component'
 import { environment } from '../../../environments/environment'
 import { tap, } from 'rxjs/operators';
+import { IdentityService } from '../identity.service';
 
+
+export interface LoginResType{
+  success:boolean;
+  payload?:{
+    staffName:string;
+    staffId:string;
+    identity:string;
+  }
+  errorInfo?:string;
+  errorHint?:string;
+}
 
 
 @Injectable({
@@ -11,13 +23,18 @@ import { tap, } from 'rxjs/operators';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private identityService:IdentityService,
+    ) { }
   login(loginInfo: LoginInfo) {
-    return this.http.post(environment.url.login, loginInfo)
+    return this.http.post<LoginResType>(environment.url.login, loginInfo)
 
       .pipe(
-        tap(data => {
-          console.log(data)
+        tap(res => {
+          console.log(res);
+          if(res.success){
+            this.identityService.identityUpdate(res.payload)
+          } 
         })
       )
   }

@@ -13,7 +13,6 @@ export class AppComponent {
   title = 'zhuxiwen';
   constructor(router:Router,identityService:IdentityService){
     identityService.identity
-    .pipe(take(1))
     .subscribe((identityInfo:IdentityInfo) => {
       switch (identityInfo.identity) {
         case environment.auth_status.visitor:
