@@ -24,7 +24,8 @@ export class ResetPSService {
   constructor(private http: HttpClient,
     private identityService: IdentityService) { }
   reset(resetPSInfo: ResetPSInfo) {
-    return this.http.post<ResetPSResType>(environment.url.resetPassword, resetPSInfo)
+    const url = environment.baseUrl + environment.url.resetPassword;
+    return this.http.post<ResetPSResType>(url, resetPSInfo)
 
       .pipe(
         tap(res => {

@@ -4,16 +4,39 @@
         width: 100%;
         position: fixed;
         z-index: 10;
+        .menu-title{
+            padding-left: 10px;
+        }
+        .menu{
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            button{
+               
+                font-family: "SimSun";
+            }
+           
+        }
     }
     .container{
         margin-top:64px;
+        @media (max-width:599px) {
+            margin-top:56px;
+        }
         min-height: calc(100vh - 64px)
     }
     .sidebar{
         top:64px;
+        @media (max-width:599px) {
+            top:56px;
+        }
         position: fixed;
     }
     .content{
-        height: 2000px;
+        
+        min-height:calc(100vh - 64px);
+        @media (max-width:599px) {
+            min-height:calc(100vh - 56px);
+        }
     }
 }

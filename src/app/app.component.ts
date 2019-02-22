@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IdentityService, IdentityInfo } from './core/identity.service';
-import {take} from 'rxjs/operators'
+import { take } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,19 +11,26 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'zhuxiwen';
-  constructor(router:Router,identityService:IdentityService){
+  constructor(router: Router, identityService: IdentityService) {
     identityService.identity
-    .subscribe((identityInfo:IdentityInfo) => {
-      switch (identityInfo.identity) {
-        case environment.auth_status.visitor:
-        router.navigateByUrl('/passport/auth/login')
-          break;
-        case environment.auth_status.lockUser:
-        router.navigateByUrl('/passport/auth/reset-password');
-        default:
-          break;
-      }
-    })
-    
+      .subscribe((identityInfo: IdentityInfo) => {
+        switch (identityInfo.identity) {
+          case environment.auth_status.visitor:
+            router.navigateByUrl('/passport/auth/login')
+            break;
+          case environment.auth_status.lockUser:
+            router.navigateByUrl('/passport/auth/reset-password');
+            break;
+          case environment.auth_status.admin:
+            router.navigateByUrl('/admin');
+            break;
+            case environment.auth_status.member:
+            router.navigateByUrl('/member');
+            break;
+          default:
+            break;
+        }
+      })
+
   }
 }

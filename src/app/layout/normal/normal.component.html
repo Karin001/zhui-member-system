@@ -1,23 +1,38 @@
 <header>
   <mat-toolbar color="primary" class="header">
+    <button mat-icon-button>
+        <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+    </button>
    
-    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
     <!-- <i (click)="drawer.toggle()" class="anticon anticon-menu-unfold" *ngIf="!sidebarIsHide"></i> -->
     <div class="menu-title">
       嘴的员工管理系统
     </div>
-    <mat-icon>person</mat-icon>
+    <div class="menu">
+    
+      <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        <span>  {{identity.staffName}}</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">登出</button>
+        <button mat-menu-item [routerLink]="[ '/passport/auth/reset-password']">重置密码</button>
+      </mat-menu>
+      
+    </div>
+
   </mat-toolbar>
 </header>
 <mat-drawer-container class="container" [hasBackdrop]="true">
-  <mat-drawer #drawer opened class="sidebar" [mode]="'over'" >
+  <mat-drawer #drawer opened class="sidebar" [mode]="'over'">
     <app-normal-sidebar></app-normal-sidebar>
   </mat-drawer>
   <mat-drawer-content class="content">
     <div class="router">
       <router-outlet></router-outlet>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <span>
         Build by
         <a routerLink="/project/author">
@@ -30,6 +45,6 @@
       <span>
         如需转载请标明出处
       </span>
-    </div>
+    </div> -->
   </mat-drawer-content>
 </mat-drawer-container>

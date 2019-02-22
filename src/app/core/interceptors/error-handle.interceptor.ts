@@ -3,12 +3,16 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, Htt
 import { Observable, timer, zip, range } from 'rxjs';
 import { catchError, retryWhen, map, mergeMap } from 'rxjs/operators'
 import { of } from 'rxjs'
-import {environment} from '../../../environments/environment'
+import { environment } from '../../../environments/environment'
+import { MatSnackBar } from '@angular/material';
 const error_config = environment.errorHandle
 // import {backoff} from '../../utils/backoff'
 
 @Injectable()
 export class ErrorHandleInterceptor implements HttpInterceptor {
+    constructor(private snk: MatSnackBar, ) {
+
+    }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             retryWhen(attempts => zip(range(1, 3 + 1), attempts)
@@ -39,12 +43,15 @@ export class ErrorHandleInterceptor implements HttpInterceptor {
                 }
                 const errorInfo = error_config.getErrorInfo(error)
                 let mockRes;
-                if(errorInfo && error_config.errorDeCode[errorInfo]) {
-                    mockRes = new HttpResponse({ body: { errorInfo:errorInfo, success: false, errorHint:error_config.errorDeCode[errorInfo] } });
-                } else{
-                    mockRes = new HttpResponse({ body: { errorInfo:'other error', success: false, errorHint:error_config.otherErrorInfo } });
-                }
-                
+                const [_erroHint, _erroInfo] =
+                    errorInfo && error_config.errorDeCode[errorInfo] ?
+                        [error_config.errorDeCode[errorInfo], errorInfo] :
+                        [error_config.otherErrorInfo, 'other error'];
+
+                mockRes = new HttpResponse({ body: { errorInfo: _erroInfo, success: false, errorHint: _erroHint } });
+                this.snk.open(_erroHint, null, {
+                    duration: 2000
+                })
                 return of(mockRes)
             })
         )

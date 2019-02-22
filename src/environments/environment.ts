@@ -6,10 +6,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export const environment = {
   production: false,
+  baseUrl:'http://localhost',
+  useMock:true,
   url:{
     identity:'/api/identity',
     login:'/api/login',
-    resetPassword:'/api/resetPassword'
+    resetPassword:'/api/resetPassword',
+    logout:'/api/logout'
   },
   auth_status:{
     admin:'admin',
@@ -24,7 +27,7 @@ export const environment = {
         children:[
           {
             name:'查看所有项目',
-            url:'/project/all',
+            url:'/member',
             icon:'folder'
           },
           {

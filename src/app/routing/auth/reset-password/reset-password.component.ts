@@ -15,7 +15,8 @@ export class ResetPasswordComponent implements OnInit {
   password2;
   resetPending = false;
   constructor(private resetPSService:ResetPSService,
-    private snk: MatSnackBar,) { }
+    // private snk: MatSnackBar,
+    ) { }
 
   ngOnInit() {
   }
@@ -24,11 +25,11 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPSService.reset({password:this.password})
     .subscribe(res => {
       this.resetPending = false;
-      if (!res.success) {
-        this.snk.open(res.errorHint, null, {
-          duration: 2000
-        })
-      } 
+      // if (!res.success) {
+      //   this.snk.open(res.errorHint, null, {
+      //     duration: 2000
+      //   })
+      // } 
     })
   }
   deletePS2(){

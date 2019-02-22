@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginInfo } from '../../routing/auth/login/login.component'
 import { environment } from '../../../environments/environment'
 import { tap, } from 'rxjs/operators';
 import { IdentityService } from '../identity.service';
+import { LogoutInfo } from 'src/app/layout/normal/normal.component';
 
 
-export interface LoginResType{
+export interface LogoutResType{
   success:boolean;
-  payload?:{
-    staffName:string;
-    staffId:string;
-    identity:string;
-  }
   errorInfo?:string;
   errorHint?:string;
 }
@@ -21,20 +16,24 @@ export interface LoginResType{
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LogoutService {
 
   constructor(private http: HttpClient,
     private identityService:IdentityService,
     ) { }
-  login(loginInfo: LoginInfo) {
-    const url = environment.baseUrl + environment.url.login
-    return this.http.post<LoginResType>(url, loginInfo)
+  logout(logoutInfo: LogoutInfo) {
+    const url = environment.baseUrl + environment.url.logout
+    return this.http.post<LogoutResType>(url, logoutInfo)
 
       .pipe(
         tap(res => {
           console.log(res);
           if(res.success){
-            this.identityService.identityUpdate(res.payload)
+            this.identityService.identityUpdate({
+                identity:environment.auth_status.visitor,
+                staffId:null,
+                staffName:null
+            })
           } 
         })
       )

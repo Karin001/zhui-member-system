@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
 
       .subscribe(res => {
         this.loginPending = false;
-        if (!res.success) {
-          this.snk.open(res.errorHint, null, {
-            duration: 2000
-          })
-        } 
+        // if (!res.success) {
+        //   this.snk.open(res.errorHint, null, {
+        //     duration: 2000
+        //   })
+        // } 
       })
   }
 
