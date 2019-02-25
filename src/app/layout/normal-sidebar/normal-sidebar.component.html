@@ -1,10 +1,14 @@
 <mat-nav-list>
  <ng-container *ngFor="let item of menuItems">
   <h3 mat-subheader>{{item.name}}</h3>
-  <mat-list-item  [routerLink]="[ cItem.url ]" *ngFor="let cItem of item.children">
-    <mat-icon mat-list-icon>{{cItem.icon}}</mat-icon>
-    <h4 >{{cItem.name}}</h4>
-  </mat-list-item>
-  <mat-divider></mat-divider>
+  <ng-container  *ngFor="let cItem of item.children">
+      <mat-list-item *ngIf="!cItem.disabled"
+      [routerLink]="[ cItem.url ]">
+       <mat-icon  mat-list-icon>{{cItem.icon}}</mat-icon>
+       <h4 >{{cItem.name}}</h4>
+     </mat-list-item>
+     <mat-divider></mat-divider>
+  </ng-container>
+  
  </ng-container>
 </mat-nav-list>

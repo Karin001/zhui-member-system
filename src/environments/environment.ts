@@ -12,7 +12,9 @@ export const environment = {
     identity:'/api/identity',
     login:'/api/login',
     resetPassword:'/api/resetPassword',
-    logout:'/api/logout'
+    logout:'/api/logout',
+    projectList:'/api/projectList',
+    
   },
   auth_status:{
     admin:'admin',
@@ -33,7 +35,25 @@ export const environment = {
           {
             name:'新增一个项目',
             url:'/project/new',
-            icon:'add'
+            icon:'add',
+          },
+          {
+            name:'查看当前项目日历',
+            url:'/project/calendar',
+            icon:'add',
+            disabled:true
+          },
+          {
+            name:'查看当前项目重要事件',
+            url:'/project/mip',
+            icon:'add',
+            disabled:true
+          },
+          {
+            name:'查看当前项目员工信息',
+            url:'/project/staff',
+            icon:'add',
+            disabled:true
           }
         ]
       },

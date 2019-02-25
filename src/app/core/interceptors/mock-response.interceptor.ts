@@ -7,7 +7,8 @@ import {
     identityMockResponse,
     loginMockResponse,
     resetPSMockResponse,
-    logoutMockResponse
+    logoutMockResponse,
+    projectListMockResponse
 } from '../../mock'
 
 import { environment } from '../../../environments/environment'
@@ -15,16 +16,21 @@ import { environment } from '../../../environments/environment'
 const [baseUrl, url] = [environment.baseUrl, environment.url];
 
 const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
+    console.log('here',req.url=== baseUrl + url.projectList ,)
     switch (req.url) {
-        case baseUrl + url.identity:
+        case url.identity:
             return of(identityMockResponse)
-        case baseUrl + url.login:
+        case url.login:
             return of(loginMockResponse)
-        case baseUrl + url.resetPassword:
+        case  url.resetPassword:
             return of(resetPSMockResponse)
-        case baseUrl + url.logout:
+        case url.logout:
             return of(logoutMockResponse)
+        case  url.projectList:
+   
+            return of(projectListMockResponse)
         default:
+
             return of(identityMockResponse)
     }
 }

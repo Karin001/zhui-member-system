@@ -16,7 +16,7 @@ const computerSet = '(min-width: 1000px)'
 export class NormalComponent implements OnInit {
   identity:IdentityInfo;
   hasBackdrop = false;
-  mode = 'push'
+  mode = 'side'
   constructor(
     private identityService: IdentityService,
     private logoutService:LogoutService,
@@ -30,7 +30,7 @@ export class NormalComponent implements OnInit {
       computerSet
     ]).subscribe(result => {
       if(result.breakpoints[computerSet]){
-        [this.hasBackdrop,this.mode] = [false, 'push']
+        [this.hasBackdrop,this.mode] = [false, 'side']
       } else if(!result.breakpoints[computerSet]){
         [this.hasBackdrop,this.mode] = [true, 'over']
       }
