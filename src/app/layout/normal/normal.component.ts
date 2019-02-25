@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IdentityService, IdentityInfo } from 'src/app/core/identity.service';
 import { LogoutService } from 'src/app/core/auth/logout.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 export interface LogoutInfo{
   staffId:string;
 }
+const phoneSet = '(max-width: 599px)';
+const computerSet = '(min-width: 1000px)'
 
 @Component({
   selector: 'app-normal',
@@ -12,12 +15,25 @@ export interface LogoutInfo{
 })
 export class NormalComponent implements OnInit {
   identity:IdentityInfo;
+  hasBackdrop = false;
+  mode = 'push'
   constructor(
     private identityService: IdentityService,
-    private logoutService:LogoutService
+    private logoutService:LogoutService,
+    private breakpointObserver:BreakpointObserver 
     ) { 
     this.identityService.identity.subscribe(identityInfo=>{
       this.identity = identityInfo
+    })
+    breakpointObserver.observe([
+      phoneSet,
+      computerSet
+    ]).subscribe(result => {
+      if(result.breakpoints[computerSet]){
+        [this.hasBackdrop,this.mode] = [false, 'push']
+      } else if(!result.breakpoints[computerSet]){
+        [this.hasBackdrop,this.mode] = [true, 'over']
+      }
     })
   }
 

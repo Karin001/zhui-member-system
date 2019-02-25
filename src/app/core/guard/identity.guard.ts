@@ -4,10 +4,12 @@ import { CanActivate, CanActivateChild } from '@angular/router';
 import { IdentityService } from '../identity.service';
 
 import { environment } from '../../../environments/environment'
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class IdentityGuard implements CanActivate, CanActivateChild {
+export class IdentityGuard implements CanActivate{
   identity;
   constructor(private identityService: IdentityService,
     private router: Router) {
@@ -18,24 +20,16 @@ export class IdentityGuard implements CanActivate, CanActivateChild {
       })
   }
   canActivate(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
+    state: RouterStateSnapshot): Observable<boolean> {
     console.log(state.url)
-    if (state.url === '/passport/auth/reset-password') {
-      return this.identity !== environment.auth_status.visitor
-    } else if (state.url === '/passport/auth/login') {
-      return this.identity === environment.auth_status.visitor
-    } else if (state.url.split('/')[1] === 'admin') {
-      return this.identity === environment.auth_status.admin
-    } else if (state.url.split('/')[1] === 'member') {
-      return this.identity === environment.auth_status.member
-    } else {
-      return true
-    }
-
-  }
-  canActivateChild(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    return this.canActivate(route, state);
+    return this.identityService.identity.pipe(map(identityInfo => {
+     if (state.url === '/passport/auth/login') {
+        return identityInfo.identity === environment.auth_status.visitor
+      } else{
+        return identityInfo.identity !== environment.auth_status.visitor
+      }
+    }))
+  
 
   }
 }

@@ -24,8 +24,8 @@
 
   </mat-toolbar>
 </header>
-<mat-drawer-container class="container" [hasBackdrop]="true">
-  <mat-drawer #drawer opened class="sidebar" [mode]="'over'">
+<mat-drawer-container class="container" [hasBackdrop]="hasBackdrop">
+  <mat-drawer #drawer opened class="sidebar" [mode]="mode">
     <app-normal-sidebar></app-normal-sidebar>
   </mat-drawer>
   <mat-drawer-content class="content">
