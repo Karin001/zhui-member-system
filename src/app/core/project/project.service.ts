@@ -19,6 +19,47 @@ export interface ProjectListResType {
   success: boolean;
   payload: Project_info[];
 }
+export interface ProjectCalendarReqType {
+  projectId:string;
+  projectMonth:number;
+}
+export interface ProjectCalendarResType {
+  success:boolean;
+  payload:Project_daily_event[];
+}
+export interface Project_daily_event{
+  eventDate:Date | string;
+  mostImportantProblem:MIP[] | null;
+  memberExchange:MemberExchange | null;
+}
+export interface MIP{
+  content:string;
+  title:string;
+  problemId:string;
+  problemStatus:number; // 0 -- 未关闭 1 -- 已关闭
+  closeReason:string | null; //关闭理由;
+  apply:{staffName:string;staffId:string;applyDate:Date | string;}
+  admit:{staffName:string;staffId:string;admitDate:Date | string;}
+}
+export interface MemberExchange {
+  memberLeaveOut: {
+    staffName: string;
+    staffId: string;
+    to: {
+      projectName: string;
+      projectId: string;
+    }
+  }[]
+  memberJoinIn: {
+    staffName: string;
+    staffId: string;
+    from: {
+      projectName: string;
+      projectId: string;
+    }
+  }[]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,5 +78,9 @@ export class ProjectService {
           }
         })
       )
+  }
+
+  getProjectMonthEvent(prjCalendarReq:ProjectCalendarReqType){
+    return this.http.post<ProjectCalendarResType>(environment.url.projectCalendar,prjCalendarReq)
   }
 }

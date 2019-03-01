@@ -11,6 +11,11 @@ import { MatCardModule,
   MatProgressBarModule,
   MatSnackBarModule,
   MatMenuModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatChipsModule
   } from '@angular/material';
 import { RouterModule } from '@angular/router';
 const materialModules = [
@@ -24,7 +29,12 @@ const materialModules = [
   MatListModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatChipsModule
 ]
 @NgModule({
   declarations: [],

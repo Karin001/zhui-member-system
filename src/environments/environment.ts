@@ -14,6 +14,7 @@ export const environment = {
     resetPassword:'/api/resetPassword',
     logout:'/api/logout',
     projectList:'/api/projectList',
+    projectCalendar:'/api/projectCalendar'
     
   },
   auth_status:{

@@ -1,5 +1,5 @@
 import { HttpResponse} from '@angular/common/http'
-import { ProjectListResType } from '../core/project/project.service';
+import { ProjectListResType, ProjectCalendarResType, MIP, MemberExchange } from '../core/project/project.service';
 
 const projectListMock:ProjectListResType = {
     success: true,
@@ -71,4 +71,80 @@ const projectListMock:ProjectListResType = {
 export const projectListMockResponse = new HttpResponse({
     status:200,
     body:projectListMock
+})
+
+// projectMonthEvent
+const mip:MIP[] = [
+    {
+      title:'电路板烧毁',
+      content:'电路板因为操作不当而被烧毁了',
+      problemId:'d342ds',
+      problemStatus:0,
+      closeReason:null,
+      apply:{
+        staffName:'jackie',
+        staffId:'df324',
+        applyDate:'2018-03-23'
+      },
+      admit:{
+        staffName:'zhuxiwen',
+        staffId:'df32344',
+        admitDate:'2018-03-23'
+      }
+  
+    }
+  ]
+  const mockMemberExchange: MemberExchange = {
+    memberJoinIn: [
+      {
+        staffName: 'jeson',
+        staffId:'3f234',
+        from:{
+          projectName:'新店开发项目',
+          projectId:'sdfsdf3234234'
+        }
+      },
+      {
+        staffName: 'kifi',
+        staffId:'3f23df3',
+        from:{
+          projectName:'新店开发项目',
+          projectId:'sdfsdf3234234'
+        }
+      }
+    ],
+    memberLeaveOut:[
+      {
+        staffName: 'jeson',
+        staffId:'3f234',
+        to:{
+          projectName:'新世纪永中开发项目',
+          projectId:'sdfsdf32342123'
+        }
+      }
+    ]
+  }
+const projectMonthEventMock:ProjectCalendarResType = {
+    success:true,
+    payload:[
+        {
+            eventDate:'2018-3-1',
+            mostImportantProblem:mip,
+            memberExchange:mockMemberExchange
+        },
+        {
+            eventDate:'2018-3-4',
+            mostImportantProblem:mip,
+            memberExchange:mockMemberExchange
+        },
+        {
+            eventDate:'2018-5-1',
+            mostImportantProblem:mip,
+            memberExchange:mockMemberExchange
+        },
+    ]
+}
+export const projectCalendarMockResponse = new HttpResponse({
+    status:200,
+    body:projectMonthEventMock
 })

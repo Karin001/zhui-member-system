@@ -17,7 +17,7 @@
         
         </mat-card-content>
         <mat-card-actions>
-          <button  mat-stroked-button>项目日历</button>
+          <button  mat-stroked-button [routerLink]="[ '/admin/project/project-calendar', item.projectId]">项目日历</button>
           <button mat-stroked-button>项目重要事件</button>
           <button mat-stroked-button>项目人员</button>
         </mat-card-actions>

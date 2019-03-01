@@ -8,27 +8,30 @@ import {
     loginMockResponse,
     resetPSMockResponse,
     logoutMockResponse,
-    projectListMockResponse
+    projectListMockResponse,
+    projectCalendarMockResponse
 } from '../../mock'
 
 import { environment } from '../../../environments/environment'
 
+
 const [baseUrl, url] = [environment.baseUrl, environment.url];
 
 const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-    console.log('here',req.url=== baseUrl + url.projectList ,)
+    console.log('here', req.url === baseUrl + url.projectList)
     switch (req.url) {
         case url.identity:
             return of(identityMockResponse)
         case url.login:
             return of(loginMockResponse)
-        case  url.resetPassword:
+        case url.resetPassword:
             return of(resetPSMockResponse)
         case url.logout:
             return of(logoutMockResponse)
-        case  url.projectList:
-   
+        case url.projectList:
             return of(projectListMockResponse)
+        case url.projectCalendar:
+            return of(projectCalendarMockResponse)
         default:
 
             return of(identityMockResponse)
