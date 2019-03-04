@@ -63,9 +63,9 @@ const projectListMock:ProjectListResType = {
             projectStartDate:'2019-01-16',
             projectStatus:2
         },
-    
+
     ]
-    
+
 }
 
 export const projectListMockResponse = new HttpResponse({
@@ -91,7 +91,7 @@ const mip:MIP[] = [
         staffId:'df32344',
         admitDate:'2018-03-23'
       }
-  
+
     }
   ]
   const mockMemberExchange: MemberExchange = {
@@ -128,17 +128,17 @@ const projectMonthEventMock:ProjectCalendarResType = {
     success:true,
     payload:[
         {
-            eventDate:'2018-3-1',
+            eventDate:'2018-03-01',
             mostImportantProblem:mip,
             memberExchange:mockMemberExchange
         },
         {
-            eventDate:'2018-3-4',
+            eventDate:'2018-03-04',
             mostImportantProblem:mip,
             memberExchange:mockMemberExchange
         },
         {
-            eventDate:'2018-5-1',
+            eventDate:'2018-05-01',
             mostImportantProblem:mip,
             memberExchange:mockMemberExchange
         },
