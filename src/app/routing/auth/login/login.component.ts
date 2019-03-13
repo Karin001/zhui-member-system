@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 export interface LoginInfo {
-  id: string;
+  staffId: string;
   password: string;
 }
 
@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
   password_hide = true;
   loginPending = false;
   loginInfo: LoginInfo = {
-    id: '',
+    staffId: '',
     password: ''
-  }
-  constructor(private loginService: LoginService, 
+  };
+  constructor(private loginService: LoginService,
     private snk: MatSnackBar,
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         //   this.snk.open(res.errorHint, null, {
         //     duration: 2000
         //   })
-        // } 
+        // }
       })
   }
 

@@ -12,9 +12,9 @@ import { MockInterceptor } from './interceptors/mock-response.interceptor';
     HttpClientModule,
   ],
   providers:[
-    startUpProvider, 
+    startUpProvider,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandleInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true }
   ]
 })
 export class CoreModule { }

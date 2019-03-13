@@ -6,16 +6,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export const environment = {
   production: false,
-  baseUrl:'http://localhost',
+  baseUrl:'http://localhost:4200',
   useMock:true,
   url:{
-    identity:'/api/identity',
-    login:'/api/login',
-    resetPassword:'/api/resetPassword',
+    identity:'/api/auth/identity',
+    login:'/api/auth/login',
+    resetPassword:'/api/auth/resetPassword',
     logout:'/api/logout',
     projectList:'/api/projectList',
     projectCalendar:'/api/projectCalendar'
-    
+
   },
   auth_status:{
     admin:'admin',
@@ -66,7 +66,7 @@ export const environment = {
             icon:'face',
             url:'/people/all'
           }
-        ]  
+        ]
       }
     ],
     member:[
@@ -93,7 +93,7 @@ export const environment = {
             icon:'face',
             url:'/people/all'
           }
-        ]  
+        ]
       }
     ]
   },

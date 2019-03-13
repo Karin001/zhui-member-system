@@ -28,14 +28,15 @@ export class LoginService {
     ) { }
   login(loginInfo: LoginInfo) {
     const url = environment.baseUrl + environment.url.login
-    return this.http.post<LoginResType>(url, loginInfo)
+    return this.http.post<LoginResType>(url, JSON.stringify(loginInfo) )
 
       .pipe(
         tap(res => {
+          console.log('loginInfo', loginInfo);
           console.log(res);
           if(res.success){
             this.identityService.identityUpdate(res.payload)
-          } 
+          }
         })
       )
   }
