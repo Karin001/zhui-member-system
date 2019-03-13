@@ -11,6 +11,7 @@ import { ProjectService, Project_daily_event } from 'src/app/core/project/projec
 export class ProjectCalendarComponent implements OnInit {
   projectMonthEvent: Project_daily_event[];
   myFilter;
+  minDate;
   dateNow = '3/8/2311';
   constructor(
     private route: ActivatedRoute,

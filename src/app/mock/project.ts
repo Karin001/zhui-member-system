@@ -1,7 +1,7 @@
 import { HttpResponse} from '@angular/common/http'
 import { ProjectListResType, ProjectCalendarResType, MIP, MemberExchange } from '../core/project/project.service';
 
-const projectListMock:ProjectListResType = {
+export const projectListMock: ProjectListResType = {
     success: true,
     payload: [
         {

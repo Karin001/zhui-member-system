@@ -6,19 +6,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export const environment = {
   production: false,
-  baseUrl:'http://localhost:4200',
+  baseUrl:'',
   useMock:true,
   url:{
     identity:'/api/auth/identity',
     login:'/api/auth/login',
     resetPassword:'/api/auth/resetPassword',
-    logout:'/api/logout',
+    logout:'/api/auth/logout',
     projectList:'/api/projectList',
     projectCalendar:'/api/projectCalendar'
 
   },
   auth_status:{
-    admin:'admin',
+    admin:'HR',
     visitor:'visitor',
     member:'member',
     lockUser:'lockUser',

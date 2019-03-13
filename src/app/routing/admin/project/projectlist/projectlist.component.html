@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card class="project-card" *ngFor="let item of projectList$ | async">
+    <mat-card class="project-card" *ngFor="let item of projectList$ ">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"><mat-icon class="icon">card_travel</mat-icon></div>
           <mat-card-title>{{item.projectName}}</mat-card-title>
@@ -14,7 +14,7 @@
             <mat-list-item>项目外派人数：{{item.projectNOP}}</mat-list-item>
             <mat-list-item>项目状态：{{item.projectStatus}}</mat-list-item>
           </mat-list>
-        
+
         </mat-card-content>
         <mat-card-actions>
           <button  mat-stroked-button [routerLink]="[ '/admin/project/project-calendar', item.projectId]">项目日历</button>
@@ -22,6 +22,6 @@
           <button mat-stroked-button>项目人员</button>
         </mat-card-actions>
       </mat-card>
-      
-      
+
+
 </div>
