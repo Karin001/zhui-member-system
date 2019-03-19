@@ -104,6 +104,8 @@ export const environment = {
     },
     errorDeCode:{
       'sesslon invalid':'权限已过期,即将过跳转到重新登录页面',
+      'user or password id not right':'登录信息错误，请核对id和密码',
+      'form is not valid':'登录格式错误',
       'origin password':'您未修改初始密码，即将跳转到修改密码页面',
       'login info error':'登录信息有误，请重新输入'
     },
