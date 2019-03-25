@@ -5,12 +5,16 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectlistComponent } from './projectlist/projectlist.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProjectCalendarComponent } from './project-calendar/project-calendar.component';
-import { DailyEventComponent } from './project-calendar/daily-event/daily-event.component';
+
 import { MemberChangeComponent } from './project-calendar/member-change/member-change.component';
+import { NewProjectComponent } from './new-project/new-project.component';
+import { FormsModule } from '@angular/forms';
+import { ProjectStaffComponent } from './project-staff/project-staff.component';
 
 @NgModule({
-  declarations: [ProjectlistComponent, ProjectCalendarComponent, DailyEventComponent, MemberChangeComponent],
+  declarations: [ProjectlistComponent, ProjectCalendarComponent,  MemberChangeComponent, NewProjectComponent, ProjectStaffComponent],
   imports: [
+    FormsModule,
     CommonModule,
     SharedModule,
     ProjectRoutingModule

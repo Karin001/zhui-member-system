@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule,
+import {
+  MatCardModule,
   MatButtonModule,
   MatSidenavModule,
   MatToolbarModule,
-   MatIconModule,
+  MatIconModule,
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
@@ -15,9 +16,13 @@ import { MatCardModule,
   MatNativeDateModule,
   MatTabsModule,
   MatExpansionModule,
-  MatChipsModule
-  } from '@angular/material';
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatOptionModule
+} from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { AutoComplateComponent } from './own/auto-complate/auto-complate.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const materialModules = [
   MatCardModule,
   MatButtonModule,
@@ -34,16 +39,22 @@ const materialModules = [
   MatNativeDateModule,
   MatTabsModule,
   MatExpansionModule,
-  MatChipsModule
+  MatChipsModule,
+  MatOptionModule,
+  MatExpansionModule,
 ]
 @NgModule({
-  declarations: [],
+  declarations: [AutoComplateComponent],
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     RouterModule,
     ...materialModules,
   ],
-  exports:[
+  exports: [
     ...materialModules,
+    AutoComplateComponent,
     RouterModule
   ]
 })

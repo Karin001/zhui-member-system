@@ -9,18 +9,18 @@ import { projectListMock } from 'src/app/mock/project';
   styleUrls: ['./projectlist.component.scss']
 })
 export class ProjectlistComponent implements OnInit {
-  projectList$ = projectListMock.payload;
-    // this.projectService.getList()
-    //   .pipe(
-    //     filter(res => res.success),
-    //     map(res => res.payload)
-    //   );
+  projectList$ =
+    this.projectService.getList()
+      .pipe(
+        filter(res => res.success),
+        map(res => res.payload)
+      );
   constructor(private projectService: ProjectService) {
 
   }
 
   ngOnInit() {
-    console.log(this.projectList$)
+    console.log(123123)
   }
 
 }

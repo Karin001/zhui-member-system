@@ -7,7 +7,7 @@ const identityMock:IdentityResType = {
     payload: {
        staffName:'朱希文',
        staffId:'123123d3',
-       identity:'admin'
+       identity:'HR'
     }
 }
 

@@ -1,0 +1,14 @@
+:host{
+ .staff{
+   line-height: 30px;
+   padding:0 10px;
+   cursor: pointer;
+   border-radius: calc(.5em + 5px) ;
+   background-color: rgb(125, 20, 167);
+ }
+ .project {
+  @extend .staff;
+  background-color: rgb(13, 241, 135);
+  color:black;
+ }
+}

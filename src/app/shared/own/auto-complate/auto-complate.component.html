@@ -1,0 +1,10 @@
+
+ <mat-form-field class="example-full-width">
+  <input matInput #option placeholder="派遣人员" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option  *ngFor="let state of filteredStates | async" [value]="state.staffName"  (click)="onclick(state);option.blur()">
+      <span>{{state.staffName}}</span> |
+      <small>id: {{state.staffId}}</small>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

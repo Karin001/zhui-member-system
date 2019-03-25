@@ -8,19 +8,26 @@ import { environment } from '../../../environments/environment';
 })
 export class NormalSidebarComponent implements OnInit {
   menuItems;
-  constructor(identityService:IdentityService) {
+  constructor(identityService: IdentityService) {
     identityService.identity.subscribe(identityInfo => {
       switch (identityInfo.identity) {
         case environment.auth_status.admin:
-          this.menuItems = environment.permission.admin
+
+
+          this.menuItems = environment.permission.admin;
+          console.log(this.menuItems);
+
           break;
         case environment.auth_status.member:
-          this.menuItems = environment.permission.member
+
+
+          this.menuItems = environment.permission.member;
+          break;
         default:
           break;
       }
-    })
-   }
+    });
+  }
 
   ngOnInit() {
   }

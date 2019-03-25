@@ -30,12 +30,12 @@ export const environment = {
         children:[
           {
             name:'查看所有项目',
-            url:'/member',
+            url:'/admin/project/projectlist',
             icon:'folder'
           },
           {
             name:'新增一个项目',
-            url:'/project/new',
+            url:'/admin/project/new',
             icon:'add',
           },
           {
@@ -63,6 +63,11 @@ export const environment = {
         children:[
           {
             name:'查看所有人员',
+            icon:'face',
+            url:'/people/all'
+          },
+          {
+            name:'新增员工',
             icon:'face',
             url:'/people/all'
           }

@@ -5,10 +5,52 @@
     <mat-datepicker [disabled]="false" #picker></mat-datepicker>
   </mat-form-field>
   <mat-tab-group>
-      <mat-tab label="First">
-        <app-member-change></app-member-change>
+      <mat-tab label="人员调动">
+        <mat-list>
+          <mat-list-item >
+
+            <span class="staff" >张三</span>
+            <mat-icon>arrow_forward</mat-icon>
+            <span class="project">何润项目3</span>
+
+
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item >
+              <span  class="staff" >李四</span>
+               <mat-icon>arrow_back</mat-icon>
+              <span class="project">奥兰的项目4</span>
+
+            </mat-list-item>
+        </mat-list>
       </mat-tab>
-      <mat-tab label="Second">
-        <app-daily-event ></app-daily-event>
+      <mat-tab label="今日周记提交">
+        <mat-list>
+          <mat-list-item>
+            <span  class="staff">黄美琳</span>
+            已提交
+            <button mat-button>查看</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <span  class="staff">翁帆</span>
+            已提交
+            <button mat-button>查看</button>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="今日加班">
+        <mat-list>
+          <mat-list-item>
+            <span class="staff">黄美琳</span>
+
+            半小时
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <span class="staff">翁帆</span>
+           2小时
+          </mat-list-item>
+        </mat-list>
       </mat-tab>
     </mat-tab-group>
