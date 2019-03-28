@@ -1,0 +1,17 @@
+
+
+<mat-form-field>
+    <mat-select placeholder="Placeholder" [(ngModel)]="selectedValue"
+     name="item">
+        <mat-option *ngFor="let item of items" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+</mat-form-field>
+<h2 *ngIf="selectedValue">
+  目前为止{{selectedValue}}呆过3个项目
+  第一个项目“xxxx”干了20天（除开节假日和停工），加班102.3个小时,写了23篇周记
+</h2>
+
+<app-myproject-calendar *ngIf="selectedValue" mode="project-staff" (notifier)="onClick($event)"></app-myproject-calendar>
+

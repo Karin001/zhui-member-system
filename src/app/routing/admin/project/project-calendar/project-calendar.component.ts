@@ -12,7 +12,16 @@ export class ProjectCalendarComponent implements OnInit {
   projectMonthEvent: Project_daily_event[];
   myFilter;
   minDate;
-  dateNow = '3/8/2311';
+  showData;
+ 
+
+  items=[
+    "2018-12",
+    "2019-1",
+    "2019-2",
+    "2019-3",
+  ]
+  selectedValue;
   constructor(
     private route: ActivatedRoute,
     private projectSrc: ProjectService
@@ -37,6 +46,11 @@ export class ProjectCalendarComponent implements OnInit {
 
         }
       })
+  }
+
+  onClick(data){
+    console.log(data)
+    this.showData = {...data};
   }
 
 }

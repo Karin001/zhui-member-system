@@ -64,12 +64,12 @@ export const environment = {
           {
             name:'查看所有人员',
             icon:'face',
-            url:'/people/all'
+            url:'/admin/people/all'
           },
           {
             name:'新增员工',
             icon:'face',
-            url:'/people/all'
+            url:'/admin/people/add'
           }
         ]
       }

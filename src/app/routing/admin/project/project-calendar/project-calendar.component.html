@@ -1,56 +1,54 @@
 <mat-form-field class="example-full-width">
-    <input matInput  [matDatepickerFilter]="myFilter"  [matDatepicker]="picker"
-    value="1/2/3324" [min]="minDate" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker [disabled]="false" #picker></mat-datepicker>
-  </mat-form-field>
+    <mat-select  placeholder="选择日期" [(ngModel)]="selectedValue" name="item">
+      <mat-option *ngFor="let item of items" [value]="item">
+        {{item}}
+      </mat-option>
+    </mat-select>
+   </mat-form-field>
+  <app-myproject-calendar (notifier)="onClick($event)"></app-myproject-calendar>
   <mat-tab-group>
+
+
       <mat-tab label="人员调动">
         <mat-list>
-          <mat-list-item >
+          <mat-list-item *ngFor="let item of showData?.staffChangeEvent?.isLeave">
 
-            <span class="staff" >张三</span>
+            <span class="staff" >{{item.staffName}}</span>
             <mat-icon>arrow_forward</mat-icon>
-            <span class="project">何润项目3</span>
+            leave
 
 
           </mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item >
-              <span  class="staff" >李四</span>
+          <mat-list-item *ngFor="let item of showData?.staffChangeEvent?.isJoin">
+              <span  class="staff" >{{item.staffName}}</span>
                <mat-icon>arrow_back</mat-icon>
-              <span class="project">奥兰的项目4</span>
+              join
 
             </mat-list-item>
         </mat-list>
       </mat-tab>
       <mat-tab label="今日周记提交">
-        <mat-list>
-          <mat-list-item>
-            <span  class="staff">黄美琳</span>
-            已提交
-            <button mat-button>查看</button>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <span  class="staff">翁帆</span>
-            已提交
-            <button mat-button>查看</button>
-          </mat-list-item>
-        </mat-list>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let item of showData?.diary">
+            <mat-expansion-panel-header>
+              {{item.staffName}}
+            </mat-expansion-panel-header>
+            {{item.content}}
+          </mat-expansion-panel>
+        </mat-accordion>
+  
       </mat-tab>
       <mat-tab label="今日加班">
         <mat-list>
-          <mat-list-item>
-            <span class="staff">黄美琳</span>
-
-            半小时
+          <mat-list-item *ngFor="let item of showData?.overtime">
+            <span class="staff">{{item.staffName}}</span>
+            {{item.start}}-{{item.over}}
+            共{{item.time}}小时
+            <mat-divider></mat-divider>
           </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <span class="staff">翁帆</span>
-           2小时
-          </mat-list-item>
+          
+          
         </mat-list>
       </mat-tab>
     </mat-tab-group>

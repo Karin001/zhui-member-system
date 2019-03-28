@@ -18,11 +18,13 @@ import {
   MatExpansionModule,
   MatChipsModule,
   MatAutocompleteModule,
-  MatOptionModule
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { AutoComplateComponent } from './own/auto-complate/auto-complate.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyCalendarModule } from './my-calendar/my-calendar.module';
 const materialModules = [
   MatCardModule,
   MatButtonModule,
@@ -42,6 +44,7 @@ const materialModules = [
   MatChipsModule,
   MatOptionModule,
   MatExpansionModule,
+  MatSelectModule
 ]
 @NgModule({
   declarations: [AutoComplateComponent],
@@ -51,11 +54,13 @@ const materialModules = [
     MatAutocompleteModule,
     RouterModule,
     ...materialModules,
+    MyCalendarModule
   ],
   exports: [
     ...materialModules,
     AutoComplateComponent,
-    RouterModule
+    RouterModule,
+    MyCalendarModule
   ]
 })
 export class SharedModule { }

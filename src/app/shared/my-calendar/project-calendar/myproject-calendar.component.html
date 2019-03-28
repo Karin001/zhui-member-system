@@ -1,0 +1,30 @@
+<app-base-calendar>
+  <div class="days"
+  [class.yasumi]="day.isRest"
+    [class.selected]="day.selected"
+    
+  *ngFor="let day of _projectMonthData" (click)="onClick(day)">
+   <ng-container *ngIf="mode === 'project'">
+      <div class="date">{{day.monthDay}}</div>
+    <div class="diary" *ngIf="day.diary">周记:{{day.diary.length}}</div>
+    <div class="ot" *ngIf="day.overtime">加班:{{day.overtime.length}}</div>
+    <div class="sf" *ngIf="day.staffChangeEvent">调动:{{day.staffChangeEvent.isLeave.length + day.staffChangeEvent.isJoin.length}}</div>
+    <div class="pause" *ngIf="day.status==='pause'">停工</div>
+    <div class="over" *ngIf="day.status==='off'">
+    
+    </div>
+   </ng-container>
+
+   <ng-container *ngIf="mode === 'project-staff'">
+      <div class="date">{{day.monthDay}}</div>
+    <div class="diary" *ngIf="day.diary">周记</div>
+    <div class="ot" *ngIf="day.overtime">加班:{{day.overtime?.time}}hr</div>
+    <!-- <div class="pause" *ngIf="day.status==='pause'">请假</div> -->
+    <div class="over" *ngIf="day.status==='off'">
+    
+    </div>
+   </ng-container>
+   
+  </div>
+
+</app-base-calendar>
