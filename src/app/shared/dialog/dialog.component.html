@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+<h1 mat-dialog-title>写周记咯！</h1>
+<div mat-dialog-content class="content">
   <mat-form-field>
-    <input matInput [value]="data.animal">
+    <input matInput placeholder="周记标题" [value]="data.animal">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="在此填写内容" rows='6'></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

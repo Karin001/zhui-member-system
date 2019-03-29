@@ -33,7 +33,7 @@ export class MemberMainComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '400px',
       data: { name: 'zhpouji', animal: 'zhouji' }
     });
 
