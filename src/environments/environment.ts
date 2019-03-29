@@ -19,6 +19,7 @@ export const environment = {
   },
   auth_status:{
     admin:'HR',
+    pm:'pm',
     visitor:'visitor',
     member:'member',
     lockUser:'lockUser',
@@ -26,7 +27,7 @@ export const environment = {
   permission:{
     admin:[
       {
-        name:'项目管理',
+        name:'项目',
         children:[
           {
             name:'查看所有项目',
@@ -38,28 +39,10 @@ export const environment = {
             url:'/admin/project/new',
             icon:'add',
           },
-          {
-            name:'查看当前项目日历',
-            url:'/project/calendar',
-            icon:'add',
-            disabled:true
-          },
-          {
-            name:'查看当前项目重要事件',
-            url:'/project/mip',
-            icon:'add',
-            disabled:true
-          },
-          {
-            name:'查看当前项目员工信息',
-            url:'/project/staff',
-            icon:'add',
-            disabled:true
-          }
         ]
       },
       {
-        name:'人员管理',
+        name:'人员',
         children:[
           {
             name:'查看所有人员',
@@ -71,6 +54,43 @@ export const environment = {
             icon:'face',
             url:'/admin/people/add'
           }
+        ]
+      },
+      {
+        name:'统计',
+        children:[
+          {
+            name:'统计面板',
+            icon:'face',
+            url:'/admin/statistics/dashboard'
+          },
+        
+        ]
+      },
+      {
+        name:'日常',
+        children:[
+          {
+            name:'日常面板',
+            icon:'face',
+            url:'/member'
+          },
+        
+          
+        
+        ]
+      },
+      {
+        name:'消息',
+        children:[
+          {
+            name:'读周记',
+            icon:'face',
+            url:'/admin/readDiary'
+          },
+          
+          
+        
         ]
       }
     ],

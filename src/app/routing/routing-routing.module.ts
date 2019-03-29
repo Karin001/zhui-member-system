@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         path:'member',
-        canActivate:[MemberGuard],
+       // canActivate:[MemberGuard],
         loadChildren:'./member/member.module#MemberModule'
       }
     ]

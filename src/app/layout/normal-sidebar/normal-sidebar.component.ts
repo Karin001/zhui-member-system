@@ -12,7 +12,7 @@ export class NormalSidebarComponent implements OnInit {
     identityService.identity.subscribe(identityInfo => {
       switch (identityInfo.identity) {
         case environment.auth_status.admin:
-
+        case environment.auth_status.pm:
 
           this.menuItems = environment.permission.admin;
           console.log(this.menuItems);

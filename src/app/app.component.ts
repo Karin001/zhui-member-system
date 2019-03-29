@@ -22,6 +22,7 @@ export class AppComponent {
             router.navigateByUrl('/passport/auth/reset-password');
             break;
           case environment.auth_status.admin:
+          case environment.auth_status.pm: 
             router.navigateByUrl('/admin');
             break;
             case environment.auth_status.member:

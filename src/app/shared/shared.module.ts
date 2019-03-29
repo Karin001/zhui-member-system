@@ -19,12 +19,16 @@ import {
   MatChipsModule,
   MatAutocompleteModule,
   MatOptionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatBottomSheetModule,
+  MatDialogModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { AutoComplateComponent } from './own/auto-complate/auto-complate.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyCalendarModule } from './my-calendar/my-calendar.module';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { DialogComponent } from './dialog/dialog.component';
 const materialModules = [
   MatCardModule,
   MatButtonModule,
@@ -44,10 +48,13 @@ const materialModules = [
   MatChipsModule,
   MatOptionModule,
   MatExpansionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatBottomSheetModule,
+  MatDialogModule,
 ]
 @NgModule({
-  declarations: [AutoComplateComponent],
+  entryComponents:[BottomSheetComponent,DialogComponent],
+  declarations: [AutoComplateComponent, BottomSheetComponent, DialogComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -60,7 +67,9 @@ const materialModules = [
     ...materialModules,
     AutoComplateComponent,
     RouterModule,
-    MyCalendarModule
+    MyCalendarModule,
+    BottomSheetComponent,
+    DialogComponent
   ]
 })
 export class SharedModule { }

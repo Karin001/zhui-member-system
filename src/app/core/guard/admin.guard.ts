@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
 
   }
   canActivate(){
-    console.log('admin guard')
-   return this.identitySrc.identity.pipe(map(identityInfo => identityInfo.identity === environment.auth_status.admin))
+    console.log('admin pm guard')
+   return this.identitySrc.identity.pipe(map(identityInfo =>  [environment.auth_status.admin,environment.auth_status.pm].includes(identityInfo.identity)))
  }
 }

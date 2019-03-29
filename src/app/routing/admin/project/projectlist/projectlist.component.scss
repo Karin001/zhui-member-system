@@ -8,6 +8,17 @@
     justify-content: center;
     flex-wrap: wrap;
    }
+   .title{
+       display: flex;
+       align-items: center;
+   }
+   .round{
+       margin: 0 20px;
+       display: inline-block;
+       width: 15px;
+       height: 15px;
+       border-radius: 50%;
+   }
     .project-card{
        box-sizing: border-box;
        width: calc(50% - 2px);
