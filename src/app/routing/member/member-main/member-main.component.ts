@@ -9,7 +9,19 @@ import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
   styleUrls: ['./member-main.component.scss']
 })
 export class MemberMainComponent implements OnInit {
-
+  selectedProject;
+  selectedMonth;
+  projects=[{projectId:'0',projectName:'华为焊板子'},
+  {projectId:'0',projectName:'华为焊板子'},
+  {projectId:'0',projectName:'华为焊板子'},
+  {projectId:'0',projectName:'华为焊板子'}]
+  projectMonth=[
+    '2011-02-02',
+    '2011-02-02',
+    '2011-02-02',
+    '2011-02-02',
+    '2011-02-02',
+  ]
   constructor(
     private bottomSheet: MatBottomSheet,
     public dialog: MatDialog

@@ -1,0 +1,31 @@
+<button mat-raised-button>清空重选</button>
+<mat-form-field class="example-full-width">
+  <mat-select  placeholder="选择日期" [(ngModel)]="selectedDate" name="item">
+    <mat-option *ngFor="let item of dates" [value]="item">
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-select placeholder="选择项目" [(ngModel)]="selectedProject" name="item">
+    <mat-option *ngFor="let item of projects" [value]="item">
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <mat-select placeholder="选择人员" [(ngModel)]="selectedStaff" name="item">
+    <mat-option *ngFor="let item of staffs" [value]="item">
+      {{item}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<h2 *ngIf="selectedStaff || selectedProject || selectedDate">您选择的字段可能有如下统计结果：
+1.时间项目人员三者都填：xx人，在xx月,在xx项目，做了多少个小时；
+2.只填项目：xx项目做了多少个人时
+3.只填时间：xx月份所有项目总共做了多少个人时
+4.填时间和人员：选择的月份xx人员总共干了多少小时
+5.填时间和项目：选择的时间xx项目总共耗了多少个人时
+6.填人员和项目：选择的人员在xx项目耗了多少个小时
+</h2>

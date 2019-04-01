@@ -62,7 +62,7 @@ export const environment = {
           {
             name:'统计面板',
             icon:'face',
-            url:'/admin/statistics/dashboard'
+            url:'/admin/statics/main'
           },
         
         ]
@@ -86,7 +86,7 @@ export const environment = {
           {
             name:'读周记',
             icon:'face',
-            url:'/admin/readDiary'
+            url:'/admin/diary/main'
           },
           
           

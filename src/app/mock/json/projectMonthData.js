@@ -8,6 +8,22 @@ export const mt = {
             "weekDay": "2",
             "status": "on",
             "isRest": false,
+            "askForLeave":[
+                {
+                    "staffName": "张三",
+                    "staffId": "SDFSDF32",
+                    "start": "14:36",
+                    "over": "15:30",
+                    "time": "1.3"
+                },
+                {
+                    "staffName": "李四",
+                    "staffId": "SDFSDF22",
+                    "start": "16:36",
+                    "over": "19:30",
+                    "time": "1.6"
+                }
+            ],
             "overtime": [
                 {
                     "staffName": "张三",

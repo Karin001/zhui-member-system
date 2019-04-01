@@ -1,4 +1,17 @@
 <h2>当前所属项目组：华为焊板子</h2>
+<mat-form-field>
+    <mat-select placeholder="选择项目组" [(ngModel)]="selectedProject" name="item">
+        <mat-option *ngFor="let item of projects" [value]="item.projectId">
+            {{item.projectName}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="selectedProject">
+    <mat-select placeholder="选择项目月份" [(ngModel)]="selectedMonth" name="month">
+        <mat-option *ngFor="let item of projectMonth" [value]="item">
+            {{item}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
 <app-myproject-calendar mode="project-staff" (notifier)="onClick($event)"></app-myproject-calendar>
-<button mat-raised-button (click)="openBottomSheet()">Open file</button>
-<button mat-raised-button (click)="openDialog()">Pick one</button>

@@ -1,0 +1,13 @@
+:host{
+    width: 100%;
+    .content{
+
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .diary-content{
+        height: 250px;
+        overflow-y: auto;
+    }
+}
